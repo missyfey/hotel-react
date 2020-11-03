@@ -1,38 +1,361 @@
-.App {
+/* 420 , 768 , 1023 */
+:root {
+  --primaryColor: #af9a7d;
+  --mainWhite: #fff;
+  --offWhite: #f7f7f7;
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --darkGrey: #cfcfcf;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 3px;
+  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+section {
+  padding: 3em 1.8em;
+  margin: 0 auto;
+}
+p {
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+@media only screen and (min-width: 1024px) {
+  section {
+    max-width: 1127px;
+  }
+}
+/* navbar --------------------------------------------------------------------------------*/
+.nav {
+  display: flex;
+  padding: 1em 1.8em;
+  justify-content: center;
+  background: var(--offWhite);
+}
+.btn {
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.bar-btn {
+  font-size: 1.5em;
+  color: var(--primaryColor);
+}
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+}
+.nav-center {
+  width: 100%;
+}
+.navbar {
+  transition: var(--mainTransition);
+  height: 0;
+  overflow: hidden;
+}
+.navbar-ul {
+  list-style: none;
+  margin: 0;
+  padding: 1em 0;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar-item {
+  padding: 0.5em 0;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.navbar-item a {
+  text-decoration: none;
+  color: var(--mainBlack);
+  font-weight: bold;
+}
+.navbar-item a:hover {
+  color: var(--primaryColor);
+}
+.navbar-show {
+  height: 90px;
+}
+@media only screen and (min-width: 1024px) {
+  .nav-center {
+    max-width: 1127px;
+  }
+  .bar-btn {
+    display: none;
+  }
+  .nav-center {
+    display: flex;
+    align-items: center;
+  }
+  .navbar {
+    height: auto;
+  }
+  .navbar-ul {
+    display: flex;
+    margin-left: 3em;
+  }
+  .navbar-item {
+    padding: 0 1em;
   }
 }
+/* Hero --------------------------------------------------------------------------------*/
+.hero {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.defaultHero {
+  height: calc(100vh - 100px);
+  background-image: url("./images/defaultBcg.jpeg");
+}
+.roomsHero {
+  height: 50vh;
+  background-image: url("./images/room-1.jpeg");
+}
+/* Banner --------------------------------------------------------------------------------*/
+.banner {
+  background: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  padding: 1em;
+}
+.banner-btn {
+  background: var(--primaryColor);
+  padding: 0.7em 1.5em;
+  transition: var(--mainTransition);
+  border: 2px solid var(--primaryColor);
+}
+.banner-btn:hover {
+  background: none;
+}
+.banner-btn:hover.banner-btn a {
+  color: var(--primaryColor);
+}
+.banner-btn a {
+  letter-spacing: var(--mainSpacing);
+  text-decoration: none;
+  color: var(--mainBlack);
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media only screen and (min-width: 1024px) {
+  .banner {
+    max-width: 1127px;
+  }
+}
+/* Title --------------------------------------------------------------------------------*/
+.title {
+  text-align: center;
+}
+.title div {
+  margin: 1em auto;
+  width: 300px;
+  height: 4px;
+  background: var(--primaryColor);
+}
+.title-header {
+  color: var(--mainWhite);
+  font-size: 3em;
+  text-transform: capitalize;
+  margin: 0;
+}
+.subtitle {
+  color: white;
+  text-transform: capitalize;
+  letter-spacing: var(--mainSpacing);
+  padding: 0.7em 0;
+}
+@media only screen and (min-width: 1024px) {
+  .title-header {
+    font-size: 4.5em;
+  }
+}
+/* ComponentTitle --------------------------------------------------------------------------------*/
+.component-title {
+  text-transform: capitalize;
+  font-size: 2em;
+  letter-spacing: var(--mainSpacing);
+  margin: 0;
+}
+.component-title-container {
+  text-align: center;
+}
+.component-title-container div {
+  margin: 1em auto;
+  margin-bottom: 2em;
+  width: 50px;
+  height: 4px;
+  background: var(--primaryColor);
+}
+/* Services --------------------------------------------------------------------------------*/
+.services {
+  background: var(--darkGrey);
+}
+.services-center {
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  column-gap: 2em;
+  row-gap: 1.5em;
+}
+.services-icon {
+  color: var(--primaryColor);
+  font-size: 2.5em;
+}
+/* featured room --------------------------------------------------------------------------------*/
+.featured-room-center {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  column-gap: 1em;
+  row-gap: 1em;
+}
+/* room --------------------------------------------------------------------------------*/
+.room-container {
+  box-shadow: var(--lightShadow);
+  transition: var(--mainTransition);
+  background: var(--mainBlack);
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.room-container:hover {
+  box-shadow: var(--darkShadow);
+}
+.room-title {
+  background: var(--darkGrey);
+  text-align: center;
+  padding: 0.5em 0;
+}
+.room-title p {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 0.9em;
+  text-transform: capitalize;
+}
+.room-img {
+  width: 100%;
+}
+.room-container:hover .room-img {
+  opacity: 0.5;
+  transition: var(--mainTransition);
+}
+.room-container:hover .center-btn {
+  display: block;
+}
+.room-container:hover .price-container {
+  opacity: 0;
+}
+.price-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--mainBlack);
   color: white;
+  border-radius: 0 0 10px 0;
+  padding: 0.5em 1em;
+  text-align: center;
+  transition: var(--mainTransition);
 }
-
-.App-link {
-  color: #61dafb;
+.price-container p {
+  padding: 0.1em 0;
+  margin: 0;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.price-container :nth-child(2) {
+  font-size: 0.6em;
+}
+.center-btn {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+/* loading --------------------------------------------------------------------------------*/
+.loading {
+  text-align: center;
+}
+/* rooms --------------------------------------------------------------------------------*/
+.room-list-center {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  column-gap: 1em;
+  row-gap: 1em;
+}
+.no-result {
+  text-align: center;
+  padding-top: 2em;
+}
+/* single rooms --------------------------------------------------------------------------------*/
+.room-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2em;
+}
+.room-images img {
+  width: 100%;
+}
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 5em;
+  padding: 2em 0 0.7em 0;
+}
+.info p {
+  letter-spacing: var(--mainSpacing);
+}
+.extras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 2em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.extras li {
+  font-size: 0.9em;
+}
+/* filter rooms --------------------------------------------------------------------------------*/
+.filter-room-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  column-gap: 3em;
+  padding: 1em 0 5em 0;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0;
+}
+label {
+  text-transform: capitalize;
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+  letter-spacing: var(--mainSpacing);
+}
+.input-checkbox {
+  padding: 0.2em 0;
+}
+.input-checkbox label {
+  margin-left: 1em;
+}
+.size-input {
+  display: flex;
+}
+.size-input input {
+  width: 45%;
+  border-radius: 3px;
+  border: 1px solid var(--mainBlack);
+}
+.size-input :nth-child(1) {
+  margin-right: 0.5em;
 }
